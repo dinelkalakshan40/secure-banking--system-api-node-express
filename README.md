@@ -15,9 +15,10 @@ Banking system API built with Node.js, Express, and MongoDB.
 
 ## 🛠 Setup & Installation
 
-1. **Environment Variables**: Configure `.env` based on `.env.example`.
-2. **Install Dependencies**: `npm install`
-3. **Run Server**: `npm run dev`
+1. **Clone Repository**: `git clone https://github.com/dinelkalakshan40/secure-banking--system-api-node-express.git cd secure-banking--system-api-node-express`.
+2. **Environment Variables**: Configure `.env` based on `.env.example`.
+3. **Install Dependencies**: `npm install`
+4. **Run Server**: `npm run dev`
 
 ---
 
