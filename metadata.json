@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Bank API",
+  "description": "A secure, mid-level banking system API featuring double-entry accounting, JWT authentication, OTP verification for sensitive operations, and scalable MVC architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
