@@ -6,7 +6,7 @@ import User from '../models/User.js';
 export class OTPService {
   static async createAndSendOTP(userId: string, type: OTPType, email: string) {
     const code = generateOTP();
-    const expiresAt = new Date(Date.now() + 60 * 60 * 1000); // 10 minutes
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
 
     const otp = new OTP({
       userId,
