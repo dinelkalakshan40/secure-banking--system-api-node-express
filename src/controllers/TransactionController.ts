@@ -6,6 +6,7 @@ import { OTPType } from '../models/OTP.js';
 import { AppError } from '../middlewares/errorHandler.js';
 import Account from '../models/Account.js';
 
+//deposit money 
 export const deposit = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     const { accountId, amount, description } = req.body;
@@ -16,6 +17,7 @@ export const deposit = async (req: AuthRequest, res: Response, next: NextFunctio
   }
 };
 
+//withdraw money
 export const withdraw = async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     const { accountId, amount, description, otpCode } = req.body;
@@ -38,13 +40,13 @@ export const transfer = async (req: AuthRequest, res: Response, next: NextFuncti
     const userId = req.user?.userId;
     if (!userId) throw new AppError('Unauthorized', 401);
 
-    // Security: Verify source account ownership
+    // Verify account 
     const account = await Account.findById(fromAccountId);
     if (!account || account.userId.toString() !== userId) {
       throw new AppError('Unauthorized source account', 403);
     }
 
-    // Verify OTP for transfer
+    // Verify OTP 
     await OTPService.verifyOTP(userId, otpCode, OTPType.SENSITIVE_OPERATION);
 
     const transaction = await TransactionService.transfer(fromAccountId, toAccountNumber, amount, description);
@@ -59,7 +61,7 @@ export const getHistory = async (req: AuthRequest, res: Response, next: NextFunc
   try {
     const { accountId } = req.params;
     
-    // Security: Verify account ownership
+    //  Verify account 
     const account = await Account.findById(accountId);
     if (!account || account.userId.toString() !== req.user?.userId) {
       throw new AppError('Unauthorized access to account history', 403);
